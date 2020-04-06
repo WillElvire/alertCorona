@@ -6,7 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CovidService {
 
+  country:any;
+
   apiUrl = 'https://coronavirus-19-api.herokuapp.com/';
+
+  apiUrl2=``;
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +19,19 @@ export class CovidService {
   }
 
   getCountries() {
+
     return this.http.get(`${this.apiUrl}countries`);
+
+  }
+
+  getCountryData(country){
+
+
+   
+
+    return this.http.get(`https://api.covid19api.com/dayone/country/${country}/status/confirmed`);
+
+
+
   }
 }

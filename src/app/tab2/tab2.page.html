@@ -25,6 +25,7 @@
           Deaths: {{country.deaths | number}} | Today: {{country.todayDeaths | number}}<br>
           Recovered: {{country.recovered | number}} | Critical {{country.critical | number}}
         </p>
+        <ion-button (click)="goToCountry(country.country)" shape="round" color="primary" fill="outline">Voir plus </ion-button>
       </ion-label>
     </ion-item>
   </ion-list>

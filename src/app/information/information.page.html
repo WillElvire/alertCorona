@@ -1,0 +1,37 @@
+
+
+<ion-content >
+
+
+ <div class="svg" >
+    <br>
+    <ion-title padding color="light"> Covid-19</ion-title>
+    <ion-title padding  color="light"> <b>{{nom}}</b> </ion-title>
+    <br>
+    
+</div> 
+
+
+ 
+  
+    <canvas width="300" height="300" #mychart>
+      
+
+
+    </canvas>
+
+
+
+
+  <div *ngIf="nom==undefined">
+
+
+     <h1 style="margin-left: 30%;color:forestgreen"> <b> chargement </b> </h1>
+  
+
+</div>
+
+</ion-content>
+
+
+

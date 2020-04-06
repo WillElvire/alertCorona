@@ -2,6 +2,15 @@
 <ion-content [fullscreen]="true">
 
 
+  <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)">  
+    <ion-refresher-content  
+    pullingIcon="arrow-dropdown"  
+    pullingText="Pull to refresh"  
+    refreshingSpinner="dots"  
+   ></ion-refresher-content>  
+  </ion-refresher>     
+
+
 <div class="svg">
     <br>
     <ion-title padding color="light"> Anti</ion-title>

@@ -61,4 +61,30 @@ export class Tab2Page {
 
   }
 
+
+  doRefresh(evenement){
+
+
+    setTimeout(() => {  
+      
+      evenement.target.complete();
+
+    this.covidService.getCountries().subscribe(
+    (data)=>{
+         
+           this.countries = data;
+           
+           
+     },
+         
+         (error)=>{
+              this.presentMyToast();
+         })
+
+
+    }, 2000);
+
+
+  }
+
 }

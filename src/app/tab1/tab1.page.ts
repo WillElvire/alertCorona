@@ -35,6 +35,30 @@ export class Tab1Page {
 
 
 
+ doRefresh(evenement){
+
+
+    setTimeout(() => {  
+      
+      evenement.target.complete();
+
+    this.covidService.getAll().subscribe(
+    (data)=>{
+         
+           this.info = data;
+           
+           console.log(this.info);
+     },
+         
+         (error)=>{
+              this.presentMyToast();
+         })
+
+
+    }, 2000);
+
+
+ }
   
 
 

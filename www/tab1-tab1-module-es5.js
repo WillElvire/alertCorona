@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Global Coronavirus information\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Global Coronavirus information</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Global</ion-card-subtitle>\n      <ion-card-title>Coronavirus cases</ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <h1>{{info?.cases | number}}</h1>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Global</ion-card-subtitle>\n      <ion-card-title>Deaths</ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <h1>{{info?.deaths | number}}</h1>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Global</ion-card-subtitle>\n      <ion-card-title>Recovered</ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <h1>{{info?.recovered | number}}</h1>\n    </ion-card-content>\n  </ion-card>\n  \n</ion-content>";
+    __webpack_exports__["default"] = "\r\n<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n<div class=\"svg\">\r\n    <br>\r\n    <ion-title padding color=\"light\"> Anti</ion-title>\r\n    <ion-title padding  color=\"light\"> <b>Covid-19</b> </ion-title>\r\n    <br>\r\n     <ion-buttons slot=\"end\">\r\n\r\n           <ion-menu-button color=\"light\"></ion-menu-button>\r\n    </ion-buttons>\r\n</div>\r\n \r\n \r\n  <br>\r\n  <h1 size=\"large\"  style=\"margin-left: 25%\"><b>World Statistics</b></h1>\r\n\r\n\r\n\r\n  <canvas #mychart width=\"400\" height=\"400\">  </canvas>\r\n  \r\n\r\n      <ion-text padding color=\"primary\"  >\r\n\r\n          <h1  style=\"margin-left: 5%\" > <b> Cas confirmés </b> </h1>\r\n          <h5  style=\"margin-left: 5%\">{{info?.cases | number}}  Personnes</h5>\r\n        \r\n      </ion-text>\r\n\r\n\r\n\r\n      <ion-text padding color=\"danger\"  style=\"margin-left: 5%\" >\r\n\r\n          <h1  style=\"margin-left: 5%\"> <b> Nombre de Morts </b> </h1>\r\n          <h5   style=\"margin-left: 5%\">{{info?.deaths | number}}  personnes </h5>\r\n        \r\n      </ion-text>\r\n \r\n\r\n \r\n   \r\n\r\n    <ion-text padding color=\"success\"  style=\"margin-left: 10%\" >\r\n\r\n          <h1  style=\"margin-left: 5%\" > <b>Nombre de guerrisons </b> </h1>\r\n          <h5  style=\"margin-left: 5%\">{{info?.recovered | number}} personnes</h5> \r\n        \r\n      </ion-text>\r\n\r\n\r\n  \r\n</ion-content>";
     /***/
   },
 
@@ -108,7 +108,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-content ion-toolbar {\n  --background: translucent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcUHJvamVjdHNcXGNvdmlkLWFwaVxcZnJvbnRlbmQvc3JjXFxhcHBcXHRhYjFcXHRhYjEucGFnZS5zY3NzIiwic3JjL2FwcC90YWIxL3RhYjEucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3RhYjEvdGFiMS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCBpb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNsdWNlbnQ7XG59IiwiaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-content .svg {\n  width: 50%;\n  heigth: 10vh;\n  border-bottom-right-radius: 2000px;\n  background-color: forestgreen;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcVXNlcnNcXFBDLVdJTExZXFxpb25pY193YXlcXENPVklELTE5LWFwcC9zcmNcXGFwcFxcdGFiMVxcdGFiMS5wYWdlLnNjc3MiLCJzcmMvYXBwL3RhYjEvdGFiMS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0k7RUFFRyxVQUFBO0VBQ0EsWUFBQTtFQUNBLGtDQUFBO0VBQ0EsNkJBQUE7QUNIUCIsImZpbGUiOiJzcmMvYXBwL3RhYjEvdGFiMS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICBcclxuIFxyXG4gICAgLnN2Z3tcclxuXHJcbiAgICAgICB3aWR0aDo1MCU7XHJcbiAgICAgICBoZWlndGg6MTB2aDtcclxuICAgICAgIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOjIwMDBweDtcclxuICAgICAgIGJhY2tncm91bmQtY29sb3I6Zm9yZXN0Z3JlZW47XHJcblxyXG5cclxuXHJcbiAgICAgIH1cclxuXHJcbn0iLCJpb24tY29udGVudCAuc3ZnIHtcbiAgd2lkdGg6IDUwJTtcbiAgaGVpZ3RoOiAxMHZoO1xuICBib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogMjAwMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBmb3Jlc3RncmVlbjtcbn0iXX0= */";
     /***/
   },
 
@@ -149,13 +149,63 @@
     var _covid_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../covid.service */
     "./src/app/covid.service.ts");
+    /* harmony import */
+
+
+    var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! chart.js */
+    "./node_modules/chart.js/dist/Chart.js");
+    /* harmony import */
+
+
+    var chart_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_3__);
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 
     let Tab1Page = class Tab1Page {
-      constructor(covidService) {
+      constructor(covidService, toast) {
         this.covidService = covidService;
+        this.toast = toast;
         this.info = null;
         this.covidService.getAll().subscribe(data => {
           this.info = data;
+          this.createBarChart();
+          console.log(this.info);
+        }, error => {
+          this.presentMyToast();
+        });
+      }
+
+      presentMyToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const toasts = yield this.toast.create({
+            message: 'Veuillez verifier votre connection',
+            duration: 10000
+          });
+          toasts.present();
+        });
+      }
+
+      createBarChart() {
+        this.bars = new chart_js__WEBPACK_IMPORTED_MODULE_3__["Chart"](this.mychart.nativeElement, {
+          type: 'pie',
+          data: {
+            labels: ['cas', 'mort', 'guerrison'],
+            datasets: [{
+              label: 'world',
+              data: [this.info.cases, this.info.deaths, this.info.recovered],
+              backgroundColor: ['dodgerblue', 'red', 'forestgreen'],
+              borderColor: ['rgba(0,0,0,0.9)'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {}
+          }
         });
       }
 
@@ -163,8 +213,13 @@
 
     Tab1Page.ctorParameters = () => [{
       type: _covid_service__WEBPACK_IMPORTED_MODULE_2__["CovidService"]
+    }, {
+      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]
     }];
 
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('mychart', {
+      static: false
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], Tab1Page.prototype, "mychart", void 0);
     Tab1Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-tab1',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -173,7 +228,7 @@
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./tab1.page.scss */
       "./src/app/tab1/tab1.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_covid_service__WEBPACK_IMPORTED_MODULE_2__["CovidService"]])], Tab1Page);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_covid_service__WEBPACK_IMPORTED_MODULE_2__["CovidService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])], Tab1Page);
     /***/
   }
 }]);

@@ -10,6 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  navigate:any={};
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -28,10 +31,10 @@ export class AppComponent {
 
   sideMenu()
   {
-    this.navigate =
+     this.navigate =
     [
       {
-        title : "Home",
+        title : "Accueil",
         url   : "/tabs/tab1",
         icon  : "home"
 
@@ -39,7 +42,7 @@ export class AppComponent {
       {
         title : "recherche",
         url   : "tabs/tab2",
-        icon  : "pin"
+        icon  : "search"
       },
       {
         title : "Plus",
@@ -55,6 +58,10 @@ export class AppComponent {
         title : "Profil",
         url   : "tabs/tab3",
         icon  : "person"
+      },{
+        title : "actualty",
+        url   : "tabs/actuality",
+        icon  : "globe"
       },
     ]
   }

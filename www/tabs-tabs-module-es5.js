@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"tab1\">\n      <ion-icon name=\"globe\"></ion-icon>\n      <ion-label>Global</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"flag\"></ion-icon>\n      <ion-label>Countries</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"help-circle\"></ion-icon>\n      <ion-label>About</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n";
+    __webpack_exports__["default"] = "<ion-tabs>\r\n\r\n  <ion-tab-bar slot=\"bottom\" color=\"light\">\r\n    <ion-tab-button tab=\"tab1\">\r\n      <ion-icon name=\"globe\" color=\"warning\"></ion-icon>\r\n     \r\n    </ion-tab-button>\r\n\r\n\r\n\r\n    <ion-tab-button tab=\"tab2\">\r\n      <ion-icon name=\"flag\" color=\"danger\"></ion-icon>\r\n     \r\n    </ion-tab-button>\r\n\r\n\r\n     <ion-tab-button tab=\"actuality\">\r\n     \r\n     <ion-icon name=\"home\"></ion-icon>\r\n    \r\n    </ion-tab-button>\r\n\r\n\r\n    <ion-tab-button tab=\"tab1\">\r\n      <ion-icon name=\"settings\" color=\"primary\"></ion-icon>\r\n      \r\n    </ion-tab-button>\r\n\r\n    \r\n\r\n    <ion-tab-button tab=\"tab3\">\r\n     \r\n     <ion-icon name=\"pulse\" color=\"success\"></ion-icon>\r\n    \r\n    </ion-tab-button>\r\n\r\n\r\n   \r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n";
     /***/
   },
 
@@ -72,17 +72,27 @@
           path: '',
           loadChildren: () => Promise.all(
           /*! import() | tab1-tab1-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("tab1-tab1-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~information-information-module~tab1-tab1-module"), __webpack_require__.e("tab1-tab1-module")]).then(__webpack_require__.bind(null,
           /*! ../tab1/tab1.module */
           "./src/app/tab1/tab1.module.ts")).then(m => m.Tab1PageModule)
+        }]
+      }, {
+        path: 'actuality',
+        children: [{
+          path: '',
+          loadChildren: () => __webpack_require__.e(
+          /*! import() | actuality-actuality-module */
+          "actuality-actuality-module").then(__webpack_require__.bind(null,
+          /*! ../actuality/actuality.module */
+          "./src/app/actuality/actuality.module.ts")).then(m => m.ActualityPageModule)
         }]
       }, {
         path: 'tab2',
         children: [{
           path: '',
-          loadChildren: () => Promise.all(
+          loadChildren: () => __webpack_require__.e(
           /*! import() | tab2-tab2-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("tab2-tab2-module")]).then(__webpack_require__.bind(null,
+          "tab2-tab2-module").then(__webpack_require__.bind(null,
           /*! ../tab2/tab2.module */
           "./src/app/tab2/tab2.module.ts")).then(m => m.Tab2PageModule)
         }]

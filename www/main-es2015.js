@@ -438,7 +438,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\r\n\r\n      <ion-menu side=\"start\" menuId=\"first\" contentId=\"content1\">\r\n        \r\n        <ion-content>\r\n\r\n           <div class=\"svg\">\r\n              <br>\r\n              <ion-title padding color=\"light\"> Anti</ion-title>\r\n              <ion-title padding  color=\"light\"> <b>Covid-19</b> </ion-title>\r\n              <br>\r\n\r\n           </div>\r\n       \r\n\r\n          <ion-list *ngFor=\"let pages of navigate\" inset=\"true\" lines=\"false\">\r\n          <ion-menu-toggle auto-hide=\"true\">\r\n            <ion-item [routerLink]=\"pages.url\" routerDirection=\"forward\" lines=\"false\">\r\n                <ion-icon [name]=\"pages.icon\" slot=\"start\" color=\"success\"></ion-icon>\r\n                   {{pages.title}} \r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          </ion-list>\r\n\r\n          <br>\r\n\r\n          <ion-button padding  fill=\"solid\" color=\"success\"  expand=\"full\" shape=\"round\" strong=\"true\">Connection</ion-button>\r\n\r\n        </ion-content>\r\n      </ion-menu>\r\n\r\n  <ion-router-outlet id=\"content1\" ></ion-router-outlet>\r\n</ion-app>\r\n");
 
 /***/ }),
 
@@ -710,6 +710,18 @@ const routes = [
     {
         path: '',
         loadChildren: () => __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
+    },
+    {
+        path: 'actuality',
+        loadChildren: () => __webpack_require__.e(/*! import() | actuality-actuality-module */ "actuality-actuality-module").then(__webpack_require__.bind(null, /*! ./actuality/actuality.module */ "./src/app/actuality/actuality.module.ts")).then(m => m.ActualityPageModule)
+    },
+    {
+        path: 'mesure',
+        loadChildren: () => __webpack_require__.e(/*! import() | mesure-mesure-module */ "mesure-mesure-module").then(__webpack_require__.bind(null, /*! ./mesure/mesure.module */ "./src/app/mesure/mesure.module.ts")).then(m => m.MesurePageModule)
+    },
+    {
+        path: 'information',
+        loadChildren: () => Promise.all(/*! import() | information-information-module */[__webpack_require__.e("default~information-information-module~tab1-tab1-module"), __webpack_require__.e("information-information-module")]).then(__webpack_require__.bind(null, /*! ./information/information.module */ "./src/app/information/information.module.ts")).then(m => m.InformationPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -736,7 +748,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content .svg {\n  width: 50%;\n  heigth: 10vh;\n  border-bottom-right-radius: 2000px;\n  background-color: forestgreen;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxQQy1XSUxMWVxcaW9uaWNfd2F5XFxDT1ZJRC0xOS1hcHAvc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVNO0VBRU8sVUFBQTtFQUNBLFlBQUE7RUFDQSxrQ0FBQTtFQUNBLDZCQUFBO0FDRmIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAgIFxyXG4gICAgICAuc3Zne1xyXG5cclxuICAgICAgICAgICAgIHdpZHRoOjUwJTtcclxuICAgICAgICAgICAgIGhlaWd0aDoxMHZoO1xyXG4gICAgICAgICAgICAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6MjAwMHB4O1xyXG4gICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjpmb3Jlc3RncmVlbjtcclxuXHJcblxyXG5cclxuICAgICAgfVxyXG5cclxuICAgICAgXHJcblxyXG59IiwiaW9uLWNvbnRlbnQgLnN2ZyB7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWd0aDogMTB2aDtcbiAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDIwMDBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogZm9yZXN0Z3JlZW47XG59Il19 */");
 
 /***/ }),
 
@@ -765,13 +777,45 @@ let AppComponent = class AppComponent {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
+        this.navigate = {};
         this.initializeApp();
+        this.sideMenu();
     }
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
         });
+    }
+    sideMenu() {
+        this.navigate =
+            [
+                {
+                    title: "Home",
+                    url: "/tabs/tab1",
+                    icon: "home"
+                },
+                {
+                    title: "recherche",
+                    url: "tabs/tab2",
+                    icon: "pin"
+                },
+                {
+                    title: "Plus",
+                    url: "tabs/tab3",
+                    icon: "pulse"
+                },
+                {
+                    title: "Parametre",
+                    url: "tabs/tab3",
+                    icon: "settings"
+                },
+                {
+                    title: "Profil",
+                    url: "tabs/tab3",
+                    icon: "person"
+                },
+            ];
     }
 };
 AppComponent.ctorParameters = () => [
@@ -909,7 +953,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Projects\covid-api\frontend\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\PC-WILLY\ionic_way\COVID-19-app\src\main.ts */"./src/main.ts");
 
 
 /***/ })

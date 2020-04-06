@@ -11,7 +11,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class InformationPage implements OnInit {
   
-   @ViewChild('mychart') mychart;
+   @ViewChild('mychart',{static:false}) mychart;
   country:any;
   graph:any;
   detail:any;
@@ -22,7 +22,7 @@ export class InformationPage implements OnInit {
 
      this.country=this.route.snapshot.paramMap.get('pays');
 
-     this.presentMyToast();
+   
 
      this.service.getCountryData(this.country).subscribe(
 
@@ -36,12 +36,7 @@ export class InformationPage implements OnInit {
               this.nom=this.detail[0].Country;
 
 
-              if(this.nom==undefined){
-
-
-                 this.presentMyToast();
-
-              }
+            
 
 
               this.createBarChart();
@@ -105,6 +100,32 @@ export class InformationPage implements OnInit {
   }
 
 
+  doRefresh(evenement){
+
+
+    setTimeout(() => {  
+      
+      evenement.target.complete();
+
+    this.service.getCountryData(this.country).subscribe(
+    (data)=>{
+         
+           this.detail = data;
+           
+           
+     },
+         
+         (error)=>{
+              this.presentMyToast();
+         })
+
+
+    }, 2000);
+
+
+  }
+
+
   async presentMyToast(){
 
 
@@ -115,6 +136,7 @@ export class InformationPage implements OnInit {
                       
                       message: 'Erreur lors du chargement des données',
                       duration: 10000,
+                      color:'danger'
            });
                     
           toasts.present();

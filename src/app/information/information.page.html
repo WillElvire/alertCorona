@@ -3,33 +3,39 @@
 <ion-content >
 
 
+<ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)">  
+            <ion-refresher-content  
+            pullingIcon="arrow-dropdown"  
+            pullingText="Pull to refresh"  
+            refreshingSpinner="dots"  
+           ></ion-refresher-content> 
+            
+  </ion-refresher> 
+
+
+
  <div class="svg" >
     <br>
     <ion-title padding color="light"> Covid-19</ion-title>
     <ion-title padding  color="light"> <b>{{nom}}</b> </ion-title>
     <br>
     
-</div> 
+   </div> 
 
 
  
-  
-    <canvas width="300" height="300" #mychart>
-      
+  <ion-card>
+          <canvas width="300" height="300" #mychart>
+            
 
 
-    </canvas>
+          </canvas>
+  </ion-card>
 
 
 
 
-  <div *ngIf="nom==undefined">
-
-
-     <h1 style="margin-left: 30%;color:forestgreen"> <b> chargement </b> </h1>
-  
-
-</div>
+ 
 
 </ion-content>
 

@@ -24,6 +24,14 @@ export class CovidService {
 
   }
 
+
+  getTheCountry(country){
+
+
+     return this.http.get(`${this.apiUrl}countries/${country}`);
+
+  }
+
   getCountryData(country){
 
 

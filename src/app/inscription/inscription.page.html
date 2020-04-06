@@ -1,9 +1,85 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>inscription</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
+  <div class="clean">
+    
+
+
+  </div>
+
+  <form [formGroup]="myform">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          
+          <div padding>
+            <ion-item>
+              <input  formControlName="name"  type="text" placeholder="Nom"  >
+            </ion-item>
+            <ion-item>
+              <input  formControlName="prenom" type="email" placeholder="Prenom"  >
+            </ion-item>
+
+             <ion-item>
+              <input  formControlName="prenom" type="email" placeholder="@gmail.com"  >
+            </ion-item>
+
+
+             <ion-item>
+              <input  formControlName="prenom" type="email" placeholder="Localisation"  >
+            </ion-item>
+
+
+             <ion-item>
+
+              <input  formControlName="prenom" type="password" placeholder="mot de passe"  >
+
+            </ion-item>
+
+
+
+            <ion-grid>
+              
+
+              <ion-row>
+                
+                   <ion-col size="4">
+                     
+                      <ion-item>
+                      
+                      <ion-select placeholder="ci" interface="action-sheet" required>
+
+                        <ion-select-option value="+225">ci</ion-select-option>
+                        <ion-select-option value="---">other</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+
+                   </ion-col>
+                   <ion-col size="8">
+
+
+                         <ion-item>
+
+                                <ion-input  type="password" formControlName="phone"  placeholder="telephone" required></ion-input>
+                          
+                          </ion-item>
+                     
+
+                   </ion-col>
+              </ion-row>
+
+            </ion-grid>
+            
+            
+          </div>
+          <div padding>
+            <ion-button  size="large" (click)="onSubmit()" [disabled]="!myform.valid" color="success" expand="block" shape="round">s'inscrire</ion-button>
+          </div>
+          <br>
+          <div padding>
+            <ion-button  size="large"   color="danger" expand="block" shape="round">se connecte</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

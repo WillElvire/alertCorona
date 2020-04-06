@@ -46,7 +46,7 @@ export class Tab1Page {
     (data)=>{
          
            this.info = data;
-           
+           this.createBarChart();
            console.log(this.info);
      },
          

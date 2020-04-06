@@ -17,12 +17,38 @@ export class InformationPage implements OnInit {
   detail:any;
   nom:any;
 
+  countryDetail:any;
+
   constructor(private route:ActivatedRoute,private service:CovidService,private toast:ToastController) {
 
 
      this.country=this.route.snapshot.paramMap.get('pays');
 
-   
+     this.service.getTheCountry(this.country).subscribe(
+
+
+
+         (data)=>{
+
+
+                   console.log(data);
+
+                   this.countryDetail=data;
+
+                   this.createBarChart();
+
+         },
+
+
+         (error)=>{
+
+
+
+
+         }
+    
+
+         ); 
 
      this.service.getCountryData(this.country).subscribe(
 
@@ -31,20 +57,15 @@ export class InformationPage implements OnInit {
 
               this.detail=data;
 
-              
 
               this.nom=this.detail[0].Country;
 
 
-            
-
-
-              this.createBarChart();
+              
 
          },
 
          (error)=>{
-
 
 
            this.presentMyToast();
@@ -53,7 +74,10 @@ export class InformationPage implements OnInit {
          }
 
 
-       ); 
+       );
+
+
+       
 
 
   }
@@ -68,30 +92,44 @@ export class InformationPage implements OnInit {
 
   createBarChart() {
 
-    if(this.nom!=undefined){
+    if(this.countryDetail!=undefined){
 
-          this.graph = new Chart(this.mychart.nativeElement, {
-            type: 'bar',
-            data: {
-              labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8'],
-              datasets: [{
-                label: 'Viewers in millions',
-                data: [2.5, 3.8, 5, 6.9, 6.9, 7.5, 10, 17],
-                backgroundColor: 'rgb(38, 194, 129)', // array should have same number of elements as number of dataset
-                borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }]
-              }
+          this.graph=new Chart(this.mychart.nativeElement,{
+   
+
+
+    
+     type:'doughnut',
+     data:{
+
+
+
+         labels:['cas','mort','guerrison'],
+         datasets:[{
+
+             label:'world',
+             data:[this.countryDetail.cases,this.countryDetail.deaths,this.countryDetail.recovered],
+             backgroundColor:['dodgerblue','red','forestgreen'],
+             borderColor:['rgba(0,0,0,0.5)'],
+             borderWidth:1
+         },
+         ]
+
+
+      },
+      options:{
+
+ 
+            scales:{
+
+                  
             }
-          });
+
+      }
+
+
+    })
+
 
    }
 
@@ -107,43 +145,44 @@ export class InformationPage implements OnInit {
       
       evenement.target.complete();
 
-    this.service.getCountryData(this.country).subscribe(
-    (data)=>{
-         
-           this.detail = data;
-           
-           
-     },
-         
-         (error)=>{
-              this.presentMyToast();
-         })
 
+
+     this.service.getTheCountry(this.country).subscribe(
+
+
+
+         (data)=>{this.countryDetail=data;},
+
+
+         (error)=>{this.presentMyToast();
+
+         }
+    
+
+    ); 
+  
+
+    this.service.getCountryData(this.country).subscribe(
+    (data)=>{this.detail = data;  
+
+     },(error)=>{this.presentMyToast();})
 
     }, 2000);
-
 
   }
 
 
   async presentMyToast(){
 
-
-
-     
-
-          const toasts = await this.toast.create({
+ const toasts = await this.toast.create(   
+           {
                       
-                      message: 'Erreur lors du chargement des données',
-                      duration: 10000,
-                      color:'danger'
+                message: 'Erreur lors du chargement des données',
+                duration: 10000,
+                color:'danger'
            });
                     
           toasts.present();
-
-             
-
-
   }
 
 }

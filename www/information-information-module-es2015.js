@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n<ion-content >\n\n\n <div class=\"svg\" >\n    <br>\n    <ion-title padding color=\"light\"> Covid-19</ion-title>\n    <ion-title padding  color=\"light\"> <b>{{nom}}</b> </ion-title>\n    <br>\n    \n</div> \n\n\n \n  \n    <canvas width=\"300\" height=\"300\" #mychart>\n      \n\n\n    </canvas>\n\n\n\n\n  <div *ngIf=\"nom==undefined\">\n\n\n     <h1 style=\"margin-left: 30%;color:forestgreen\"> <b> chargement </b> </h1>\n  \n\n</div>\n\n</ion-content>\n\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n\n<ion-content >\n\n\n<ion-refresher slot=\"fixed\" disabled=\"false\" (ionRefresh)=\"doRefresh($event)\">  \n            <ion-refresher-content  \n            pullingIcon=\"arrow-dropdown\"  \n            pullingText=\"Pull to refresh\"  \n            refreshingSpinner=\"dots\"  \n           ></ion-refresher-content> \n            \n  </ion-refresher> \n\n\n\n <div class=\"svg\" >\n    <br>\n    <ion-title padding color=\"light\"> Covid-19</ion-title>\n    <ion-title padding  color=\"light\"> <b>{{nom}}</b> </ion-title>\n    <br>\n\n   </div> \n\n\n \n  <ion-card>\n          <canvas width=\"300\" height=\"300\" #mychart>\n            \n\n\n          </canvas>\n  </ion-card>\n\n\n \n\n\n           <ion-text padding >  <h1 style=\"margin-left: 7%;color:forestgreen\">  Globalement   </h1>  </ion-text>\n\n           <ion-text  padding > <h6 style=\"margin-left: 7%\">  Cas :  {{countryDetail?.cases |number}}   personnes </h6> </ion-text>\n\n           <ion-text  padding > <h6 style=\"margin-left: 7%\"> Mort :   {{countryDetail?.deaths |number}}  personnes </h6></ion-text>\n\n           <ion-text  padding > <h6 style=\"margin-left: 7%\"> Guerrison :     {{countryDetail?.recovered |number}}  personnes</h6></ion-text>\n\n           <ion-text  padding > <h6 style=\"margin-left: 7%\"> Malade :     {{countryDetail?.active |number}}  personnes</h6></ion-text>\n\n           <ion-text  padding > <h6 style=\"margin-left: 7%\"> Cas critque :    {{countryDetail?.critical |number}}  personnes</h6></ion-text>\n\n\n\n\n           <ion-text padding >  <h1 style=\"margin-left: 7%;color: forestgreen\">  Aujourd'hui  </h1>  </ion-text>\n\n\n          <ion-text  padding > <h6 style=\"margin-left: 7%\">  Total des cas  :      {{countryDetail?.todayCases |number }}  personnes</h6></ion-text>\n\n          <ion-text  padding > <h6 style=\"margin-left: 7%\">  Total des decès :      {{countryDetail?.todayDeaths |number}}  personnes</h6></ion-text>\n\n\n\n\n\n  \n\n\n\n\n\n \n\n</ion-content>\n\n\n\n");
 
 /***/ }),
 
@@ -134,14 +134,15 @@ let InformationPage = class InformationPage {
         this.service = service;
         this.toast = toast;
         this.country = this.route.snapshot.paramMap.get('pays');
-        this.presentMyToast();
+        this.service.getTheCountry(this.country).subscribe((data) => {
+            console.log(data);
+            this.countryDetail = data;
+            this.createBarChart();
+        }, (error) => {
+        });
         this.service.getCountryData(this.country).subscribe((data) => {
             this.detail = data;
             this.nom = this.detail[0].Country;
-            if (this.nom == undefined) {
-                this.presentMyToast();
-            }
-            this.createBarChart();
         }, (error) => {
             this.presentMyToast();
         });
@@ -149,36 +150,43 @@ let InformationPage = class InformationPage {
     ngOnInit() {
     }
     createBarChart() {
-        if (this.nom != undefined) {
+        if (this.countryDetail != undefined) {
             this.graph = new chart_js__WEBPACK_IMPORTED_MODULE_4__["Chart"](this.mychart.nativeElement, {
-                type: 'bar',
+                type: 'doughnut',
                 data: {
-                    labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8'],
+                    labels: ['cas', 'mort', 'guerrison'],
                     datasets: [{
-                            label: 'Viewers in millions',
-                            data: [2.5, 3.8, 5, 6.9, 6.9, 7.5, 10, 17],
-                            backgroundColor: 'rgb(38, 194, 129)',
-                            borderColor: 'rgb(38, 194, 129)',
+                            label: 'world',
+                            data: [this.countryDetail.cases, this.countryDetail.deaths, this.countryDetail.recovered],
+                            backgroundColor: ['dodgerblue', 'red', 'forestgreen'],
+                            borderColor: ['rgba(0,0,0,0.5)'],
                             borderWidth: 1
-                        }]
+                        },
+                    ]
                 },
                 options: {
-                    scales: {
-                        yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                    }
+                    scales: {}
                 }
             });
         }
+    }
+    doRefresh(evenement) {
+        setTimeout(() => {
+            evenement.target.complete();
+            this.service.getTheCountry(this.country).subscribe((data) => { this.countryDetail = data; }, (error) => {
+                this.presentMyToast();
+            });
+            this.service.getCountryData(this.country).subscribe((data) => {
+                this.detail = data;
+            }, (error) => { this.presentMyToast(); });
+        }, 2000);
     }
     presentMyToast() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const toasts = yield this.toast.create({
                 message: 'Erreur lors du chargement des données',
                 duration: 10000,
+                color: 'danger'
             });
             toasts.present();
         });

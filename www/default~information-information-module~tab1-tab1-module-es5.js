@@ -34154,6 +34154,10 @@
         return this.http.get("".concat(this.apiUrl, "countries"));
       }
 
+      getTheCountry(country) {
+        return this.http.get("".concat(this.apiUrl, "countries/").concat(country));
+      }
+
       getCountryData(country) {
         return this.http.get("https://api.covid19api.com/dayone/country/".concat(country, "/status/confirmed"));
       }

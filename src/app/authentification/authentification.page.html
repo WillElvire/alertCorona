@@ -1,0 +1,29 @@
+
+
+<ion-content>
+
+    
+
+
+     <form [formGroup]="myform" style="margin-top: 40%">
+       
+
+            <ion-card>
+                   <input type="email" placeholder="votre email" required formControlName="email">
+             </ion-card>
+          <br>
+
+          <ion-card>
+                <input type="password" placeholder="votre mot de passe" required formControlName="password">
+          </ion-card>
+         <br>
+        <ion-button size="large" expand="full" fill="solid" color="success" shape="round" (click)="onSubmit()" [disabled]="!myform.valid"> Se connecter</ion-button>
+
+         <br>
+
+        <ion-button size="large" expand="full" fill="solid" shape="round" color="danger" routerLink="/inscription">Creez un compte </ion-button>
+
+
+     </form>
+
+</ion-content>

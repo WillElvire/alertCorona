@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n<div class=\"svg\">\r\n    <br>\r\n    <ion-title padding color=\"light\"> Anti</ion-title>\r\n    <ion-title padding  color=\"light\"> <b>Covid-19</b> </ion-title>\r\n    <br>\r\n     <ion-buttons slot=\"end\">\r\n\r\n           <ion-menu-button color=\"light\"></ion-menu-button>\r\n    </ion-buttons>\r\n</div>\r\n \r\n \r\n  <br>\r\n  <h1 size=\"large\"  style=\"margin-left: 25%\"><b>World Statistics</b></h1>\r\n\r\n\r\n\r\n  <canvas #mychart width=\"400\" height=\"400\">  </canvas>\r\n  \r\n\r\n      <ion-text padding color=\"primary\"  >\r\n\r\n          <h1  style=\"margin-left: 5%\" > <b> Cas confirmés </b> </h1>\r\n          <h5  style=\"margin-left: 5%\">{{info?.cases | number}}  Personnes</h5>\r\n        \r\n      </ion-text>\r\n\r\n\r\n\r\n      <ion-text padding color=\"danger\"  style=\"margin-left: 5%\" >\r\n\r\n          <h1  style=\"margin-left: 5%\"> <b> Nombre de Morts </b> </h1>\r\n          <h5   style=\"margin-left: 5%\">{{info?.deaths | number}}  personnes </h5>\r\n        \r\n      </ion-text>\r\n \r\n\r\n \r\n   \r\n\r\n    <ion-text padding color=\"success\"  style=\"margin-left: 10%\" >\r\n\r\n          <h1  style=\"margin-left: 5%\" > <b>Nombre de guerrisons </b> </h1>\r\n          <h5  style=\"margin-left: 5%\">{{info?.recovered | number}} personnes</h5> \r\n        \r\n      </ion-text>\r\n\r\n\r\n  \r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n  <ion-refresher slot=\"fixed\" disabled=\"false\" (ionRefresh)=\"doRefresh($event)\">  \r\n    <ion-refresher-content  \r\n    pullingIcon=\"arrow-dropdown\"  \r\n    pullingText=\"Pull to refresh\"  \r\n    refreshingSpinner=\"dots\"  \r\n   ></ion-refresher-content>  \r\n  </ion-refresher>     \r\n\r\n\r\n<div class=\"svg\">\r\n    <br>\r\n    <ion-title padding color=\"light\"> Anti</ion-title>\r\n    <ion-title padding  color=\"light\"> <b>Covid-19</b> </ion-title>\r\n    <br>\r\n     <ion-buttons slot=\"end\">\r\n\r\n           <ion-menu-button color=\"light\"></ion-menu-button>\r\n    </ion-buttons>\r\n</div>\r\n \r\n \r\n  <br>\r\n  <h1 size=\"large\"  style=\"margin-left: 25%\"><b>World Statistics</b></h1>\r\n\r\n\r\n\r\n  <canvas #mychart width=\"400\" height=\"400\">  </canvas>\r\n  \r\n\r\n      <ion-text padding color=\"primary\"  >\r\n\r\n          <h1  style=\"margin-left: 5%\" > <b> Cas confirmés </b> </h1>\r\n          <h5  style=\"margin-left: 5%\">{{info?.cases | number}}  Personnes</h5>\r\n        \r\n      </ion-text>\r\n\r\n\r\n\r\n      <ion-text padding color=\"danger\"  style=\"margin-left: 5%\" >\r\n\r\n          <h1  style=\"margin-left: 5%\"> <b> Nombre de Morts </b> </h1>\r\n          <h5   style=\"margin-left: 5%\">{{info?.deaths | number}}  personnes </h5>\r\n        \r\n      </ion-text>\r\n \r\n\r\n \r\n   \r\n\r\n    <ion-text padding color=\"success\"  style=\"margin-left: 10%\" >\r\n\r\n          <h1  style=\"margin-left: 5%\" > <b>Nombre de guerrisons </b> </h1>\r\n          <h5  style=\"margin-left: 5%\">{{info?.recovered | number}} personnes</h5> \r\n        \r\n      </ion-text>\r\n\r\n\r\n  \r\n</ion-content>");
 
 /***/ }),
 
@@ -101,6 +101,18 @@ let Tab1Page = class Tab1Page {
         }, (error) => {
             this.presentMyToast();
         });
+    }
+    doRefresh(evenement) {
+        setTimeout(() => {
+            evenement.target.complete();
+            this.covidService.getAll().subscribe((data) => {
+                this.info = data;
+                this.createBarChart();
+                console.log(this.info);
+            }, (error) => {
+                this.presentMyToast();
+            });
+        }, 2000);
     }
     presentMyToast() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {

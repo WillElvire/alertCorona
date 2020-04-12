@@ -6,6 +6,12 @@
 
   </div>
 
+        
+        <b class="ion-padding" color="danger" *ngIf="contact!=''" style="margin-left:1%;color: red"> {{contact}}</b>
+        <br>
+        <b class="ion-padding" color="danger" *ngIf="message!=''" style="margin-left: 2%;color: red"> {{message}}</b>
+        
+
   <form [formGroup]="myform">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
@@ -20,18 +26,18 @@
             </ion-item>
 
              <ion-item>
-              <input  formControlName="prenom" type="email" placeholder="@gmail.com"  >
+              <input  formControlName="email" type="email" placeholder="@gmail.com"  >
             </ion-item>
 
 
              <ion-item>
-              <input  formControlName="prenom" type="email" placeholder="Localisation"  >
+              <input  formControlName="localisation" type="email" placeholder="Localisation"  >
             </ion-item>
 
 
              <ion-item>
 
-              <input  formControlName="prenom" type="password" placeholder="mot de passe"  >
+              <input  formControlName="password" type="password" placeholder="mot de passe"  >
 
             </ion-item>
 
@@ -59,7 +65,7 @@
 
                          <ion-item>
 
-                                <ion-input  type="password" formControlName="phone"  placeholder="telephone" required></ion-input>
+                                <ion-input  type="text" formControlName="phone"  placeholder="telephone" required></ion-input>
                           
                           </ion-item>
                      
@@ -76,10 +82,12 @@
           </div>
           <br>
           <div padding>
-            <ion-button  size="large"   color="danger" expand="block" shape="round">se connecte</ion-button>
+            <ion-button  size="large"   color="danger" expand="block" shape="round" routerLink="/authentification">se connecter</ion-button>
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
+
+       
 </ion-content>

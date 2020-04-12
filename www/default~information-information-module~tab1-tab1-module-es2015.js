@@ -33827,6 +33827,9 @@ let CovidService = class CovidService {
     getCountries() {
         return this.http.get(`${this.apiUrl}countries`);
     }
+    getTheCountry(country) {
+        return this.http.get(`${this.apiUrl}countries/${country}`);
+    }
     getCountryData(country) {
         return this.http.get(`https://api.covid19api.com/dayone/country/${country}/status/confirmed`);
     }

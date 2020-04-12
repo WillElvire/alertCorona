@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthentificationService } from '../service/authentification.service';
 
 
 @Component({
@@ -8,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(private auth :AuthentificationService) {
+
+
+
+            console.log(this.auth.GetUserData());
+
+  }
 
 }

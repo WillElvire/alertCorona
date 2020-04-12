@@ -1,21 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>actuality</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
 
-
-     <ion-card>
-        <img src="./madison.jpg" />
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-      </ion-card>
+    <sw-card-wrapper #cardWrapper>
+  <div class="card" *ngFor="let avatar of avatars, let index = index"
+       [class.visible]="avatar.visible" [class.hidden]="!avatar.visible"
+       swSwipeable
+       [width]="350"
+       [height]="500"
+       [orientation]="'x'"
+       (swiped)="swiped($event, index)">
+    <img [src]="avatar.image" [alt]="avatar.name">
+    <h2>{{avatar.name}}, {{avatar.age}}</h2>
+  </div>
+</sw-card-wrapper>
+    
 
 </ion-content>

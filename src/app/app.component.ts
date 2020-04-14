@@ -30,16 +30,9 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       
-     /* var firebaseConfig = {
+      var firebaseConfig = {
 
-        apiKey: "AIzaSyBXQcT0SzfCypNDdOaO-JYKWPJlfzYzEW8",
-        authDomain: "alertecorona-007.firebaseapp.com",
-        databaseURL: "https://alertecorona-007.firebaseio.com",
-        projectId: "alertecorona-007",
-        storageBucket: "alertecorona-007.appspot.com",
-        messagingSenderId: "130333240942",
-        appId: "1:130333240942:web:c6f493d4bfcf52dfcdc07f",
-        measurementId: "G-D8YEKNDE3Z"
+       
     };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -57,7 +50,7 @@ export class AppComponent {
           }
         }
       ); 
-      */
+      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

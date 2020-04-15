@@ -9,7 +9,7 @@ une fois l'installation terminé
 
 installer ionic 
 
-un fois cela fait 
+une fois cela fait 
 
 vous faite un  
 
